@@ -1,0 +1,63 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "QUIZ!";
+}
+<form method="post" class="mb-3">
+    <div class="mb-3">
+        <label for="pergunta1" class="form-label">1. Qual é a capital do Brasil?</label>
+        <input type="text" class="form-control" id="pergunta1" name="Quiz.Pergunta1" value="@Model.Quiz.Pergunta1" />
+        @if (Model.Quiz.Pergunta1Correta.HasValue)
+        {
+            if (Model.Quiz.Pergunta1Correta.Value)
+            {
+                <div class="text-success">Resposta correta!</div>
+            }
+            else
+            {
+                <div class="text-danger">Resposta incorreta. A resposta correta é Brasília.</div>
+            }
+        }
+    </div>
+
+    <div class="mb-3">
+        <label for="pergunta2" class="form-label">2. Qual é o maior estado brasileiro em área?</label>
+        <input type="text" class="form-control" id="pergunta2" name="Quiz.Pergunta2" value="@Model.Quiz.Pergunta2" />
+        @if (Model.Quiz.Pergunta2Correta.HasValue)
+        {
+            if (Model.Quiz.Pergunta2Correta.Value)
+            {
+                <div class="text-success">Resposta correta!</div>
+            }
+            else
+            {
+                <div class="text-danger">Resposta incorreta. A resposta correta é Amazonas.</div>
+            }
+        }
+    </div>
+
+    <div class="mb-3">
+        <label for="pergunta3" class="form-label">3. Em qual país fica a cidade do Rio de Janeiro?</label>
+        <input type="text" class="form-control" id="pergunta3" name="Quiz.Pergunta3" value="@Model.Quiz.Pergunta3" />
+        @if (Model.Quiz.Pergunta3Correta.HasValue)
+        {
+            if (Model.Quiz.Pergunta3Correta.Value)
+            {
+                <div class="text-success">Resposta correta!</div>
+            }
+            else
+            {
+                <div class="text-danger">Resposta incorreta. A resposta correta é Brasil.</div>
+            }
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+@if (Model.Quiz.Acertos > 0 || (Model.Quiz.Pergunta1Correta.HasValue || Model.Quiz.Pergunta2Correta.HasValue || Model.Quiz.Pergunta3Correta.HasValue))
+{
+    <div class="alert alert-info">
+        Você acertou @Model.Quiz.Acertos de 3 perguntas.
+    </div>
+}
